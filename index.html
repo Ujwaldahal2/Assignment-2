@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-2</title>
+    <style>
+        #frame{
+            width: 500px;
+            height: 600px;
+            background-color: rgb(224, 231, 234);
+            margin: auto;
+            text-align: center;
+            color: green;
+        }
+        #year{
+            font-size: 1em;
+            margin-top: 10px;
+        }
+        #text{
+            margin: 10px;
+            font-size: 1.5em;
+        }
+        #name{
+            margin: 10px;
+            font-size: 1.2em;
+        }
+        #imageContainer{
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div id="year"></div>
+        <div id="text"></div>
+        <div id="name"></div>
+        <div id="imageContainer"></div>
+    </div>
+    
+    <script>
+        function checkLeapYear(year){
+            var isLeapYear = (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+            var horarySignImages = [["rat.jpg","Rat"],["ox.jpg","Ox"],["tiger.jpg","Tiger"],["hare.jpeg","Hare"],["dragon.jpg","Dragon"],
+            ["serpent.png","Serpent"],["horse.jpg","Horse"],["sheep.jpeg","Sheep"],["monkey.png","Monkey"],["hen.png","Cock"],["dog.jpeg","Dog"],["boar.jpg","Boar"]
+      ];
+            if(isLeapYear){
+                var signIndex = (year - 4) % 12;
+                var signImage = horarySignImages[signIndex][0];
+                var signName = horarySignImages[signIndex][1];
+                document.getElementById('year').innerHTML=year
+                document.getElementById('text').innerHTML="Leap Year"
+                document.getElementById('name').innerHTML=signName
+                var container = document.getElementById('imageContainer');
+                var img = document.createElement('img');
+                img.src = signImage;
+                img.style.width = '300px'; 
+                img.style.height = '500px'; 
+                container.appendChild(img);
+            }
+            else{
+                var signIndex = (year - 4) % 12;
+                var signImage = horarySignImages[signIndex][0];
+                var signName = horarySignImages[signIndex][1];
+                document.getElementById('year').innerHTML=year
+                document.getElementById('text').innerHTML="Common Year"
+                document.getElementById('name').innerHTML=signName
+                var container = document.getElementById('imageContainer');
+                var img = document.createElement('img');
+                img.src = signImage;
+                img.style.width = '300px'; 
+                img.style.height = '500px'; 
+                container.appendChild(img);
+            }
+        }
+        input=prompt("Enter the year")
+        checkLeapYear(input)
+    </script>
+</body>
+</html>
